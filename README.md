@@ -25,6 +25,8 @@ A modelagem do banco relacional foi feita considerando 5 tabelas: Lojas, Categor
 
 A implementação foi feita no Google Cloud Platform pelo CloudSQL. Ó código-fonte da implementação está disponível [aqui](https://github.com/lidiavale/TrabalhoFinalBD/blob/94d944a7e144e119acae6f751ceb6b14c38ca1e5/ImplementacaoBDR.sql), em linguagem SQL.
 
+A inclusão de dados nas tabelas foi feita pela importação de arquivos CSV alocados em um bucket na GCP.
+
 ---
 
 ## Data Warehouse
