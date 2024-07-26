@@ -27,6 +27,26 @@ A implementação foi feita no Google Cloud Platform pelo CloudSQL. O código-fo
 
 A inclusão de dados nas tabelas foi feita pela importação de arquivos CSV alocados em um bucket na GCP.
 
+### Consultas
+
+1. Listar produtos comprados por um cliente específico:
+
+```
+SELECT p.Nome
+FROM Produtos p
+JOIN Saídas s ON p.ID = s.ID_Produto
+WHERE s.ID_Cliente = 5102;
+```
+
+2. Somar vendas totais de uma filial específica:
+
+```
+SELECT SUM(s.Valor) AS TotalVendas
+FROM Saídas s
+JOIN Lojas l ON s.ID_Loja = l.ID
+WHERE l.Cidade = 'GOIANIA';
+```
+
 ---
 
 ## Data Warehouse
@@ -44,6 +64,26 @@ A implementação foi feita no Google Cloud Platform pelo BigQuery, seguindo o p
 ![ETL](https://github.com/user-attachments/assets/a8d4c9f7-3d6f-4aa3-b03c-84e4135364bd)
 
 As tabelas foram criadas e populadas a partir da conexão externa entre o BigQuery e o CloudSQL. A transformação dos dados foi feita pela conversão dos formatos de datas para ano, mês e dia e também pelo tratamento de campos NULL com a inclusão de "dado não existente".
+
+### Consultas
+
+1. Análise de vendas por loja:
+
+```
+SELECT l.Nome, SUM(f.Valor) AS TotalVendas
+FROM Fato_Saidas f
+JOIN Dim_Lojas l ON f.ID_Loja = l.ID
+GROUP BY l.Nome;
+```
+
+2. Desempenho de vendas por categoria:
+
+```
+SELECT c.Descrição, SUM(f.Valor) AS TotalVendas
+FROM Fato_Saidas f
+JOIN Dim_Categorias c ON f.ID_Categoria = c.ID
+GROUP BY c.Descrição;
+```
 
 ---
 
