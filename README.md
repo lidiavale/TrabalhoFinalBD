@@ -13,7 +13,7 @@ A apresentação do trabalho está disponível [aqui](https://www.canva.com/desi
 
 ---
 
-## Banco Realcional
+## Banco Relacional
 
 ### Modelagem
 
